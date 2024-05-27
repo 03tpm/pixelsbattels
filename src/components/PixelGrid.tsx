@@ -28,8 +28,8 @@ const PixelGrid: React.FC = () => {
     if (lastPlaced) {
       const interval = setInterval(() => {
         const timePassed = Math.floor((new Date().getTime() - lastPlaced.getTime()) / 1000);
-        setCooldown(Math.max(60 - timePassed, 0));
-      }, 1000);
+        setCooldown(Math.max(0 - timePassed, 0));
+      }, 0);
       return () => clearInterval(interval);
     }
   }, [lastPlaced]);
