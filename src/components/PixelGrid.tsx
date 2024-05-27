@@ -30,21 +30,9 @@ const PixelGrid: React.FC = () => {
         const timePassed = Math.floor((new Date().getTime() - lastPlaced.getTime()) / 1000);
         setCooldown(Math.max(60 - timePassed, 0));
       }, 1000);
-      const timePassed = Math.floor((new Date().getTime() - lastPlaced.getTime()) / 1000);
-      setCooldown(Math.max(60 - timePassed, 0)); // Встановлення початкового значення cooldown
       return () => clearInterval(interval);
     }
   }, [lastPlaced]);
-
-  // useEffect(() => {
-  //   if (lastPlaced) {
-  //     const interval = setInterval(() => {
-  //       const timePassed = Math.floor((new Date().getTime() - lastPlaced.getTime()) / 1000);
-  //       setCooldown(Math.max(60 - timePassed, 0));
-  //     }, 1000);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [lastPlaced]);
 
   const handlePixelClick = (x: number, y: number) => {
     if (cooldown > 0) return;
@@ -89,6 +77,7 @@ const PixelGrid: React.FC = () => {
           </div>
         ))}
       </div>
+      <p>Developed by eeaq</p>
     </div>
   );
 };
