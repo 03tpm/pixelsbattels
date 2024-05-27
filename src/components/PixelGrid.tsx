@@ -58,6 +58,7 @@ const PixelGrid: React.FC = () => {
           <input type="color" value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)} />
         </label>
         <p>Час до наступного пікселя: {cooldown > 0 ? `${cooldown} секунд` : 'можна ставити'}</p>
+        <p>Розважайтесь, та творіть історію ❤️</p>
       </div>
       <div className="grid">
         {Array.from({ length: 128 }).map((_, y) => (
