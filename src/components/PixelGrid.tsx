@@ -61,9 +61,9 @@ const PixelGrid: React.FC = () => {
         <p>Розважайтесь, та творіть історію ❤️</p>
       </div>
       <div className="grid">
-        {Array.from({ length: 128 }).map((_, y) => (
+        {Array.from({ length: 384 }).map((_, y) => (
           <div key={y} className="row">
-            {Array.from({ length: 256 }).map((_, x) => {
+            {Array.from({ length: 768 }).map((_, x) => {
               const pixelKey = `${x}_${y}`;
               const pixel = pixels[pixelKey];
               return (
