@@ -1,7 +1,7 @@
 {
   "homepage": "https://03tpm.github.io/pixelsbattels/",
   "name": "pixel-battle",
-  "version": "0.1.0",
+  "version": "1.5",
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.6",

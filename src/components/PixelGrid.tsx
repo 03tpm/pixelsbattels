@@ -86,7 +86,7 @@ const PixelGrid: React.FC = () => {
           </div>
         ))}
       </div>
-      <p>Developed by eeaq</p>
+      <p>Developed by eeaq, with love.</p>
       <div className="color-picker-container">
         <div className="color-picker">
           <label>

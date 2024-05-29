@@ -1,6 +1,6 @@
 body {
-  background-color: #1b1e3a; /* Dark background */
-  color: #ffffff; /* Light text color */
+  background-color: #1b1e3a;
+  color: #ffffff;
   margin: 0;
   padding: 0;
   font-family: 'Inconsolata', monospace;
@@ -52,7 +52,6 @@ html {
   border: 1px solid #000;
 }
 
-/* Ensuring all text within the App component inherits the light text color */
 .App * {
   color: inherit;
 }
@@ -78,7 +77,7 @@ html {
   box-sizing: border-box;
   max-width: 350px;
   box-sizing: border-box;
-  margin-right: 10px; /* Відступ між color-picker і undo-button */
+  margin-right: 10px;
 }
 
 .undo-button {
@@ -97,7 +96,7 @@ html {
   display: block;
   width: 40px;
   height: auto;
-  object-fit: cover; /* Зображення буде розтягнуте, щоб заповнити весь розмір кнопки */
+  object-fit: cover;
 }
 
 
