@@ -1,13 +1,40 @@
+body {
+  background-color: #1b1e3a; /* Dark background */
+  color: #ffffff; /* Light text color */
+  margin: 0;
+  padding: 0;
+  font-family: 'Inconsolata', monospace;
+}
+
 .App {
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0;
+  position: relative;
   text-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .grid {
   display: inline-block;
-  transform: scale(1);
   transform-origin: top left;
   padding: 20px;
   margin: 20px;
+}
+
+.p {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.h1 {
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .row {
@@ -17,10 +44,64 @@
 .pixel {
   width: 12px;
   height: 12px;
-  border: 1px solid #f5f5f5;
   cursor: pointer;
+  border: 1px solid #e1e1e115;
 }
 
 .pixel:hover {
   border: 1px solid #000;
+}
+
+/* Ensuring all text within the App component inherits the light text color */
+.App * {
+  color: inherit;
+}
+
+.color-picker-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+
+.color-picker {
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #36395A;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  max-width: 350px;
+  box-sizing: border-box;
+  margin-right: 10px; /* Відступ між color-picker і undo-button */
+}
+
+.undo-button {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #36395A;
+  background-color: #c34a4a;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(66, 35, 35, 0.4) 0 2px 4px, rgba(66, 35, 35, 0.3) 0 7px 13px -3px, #7e2626 0 -3px 0 inset;
+  box-sizing: border-box; 
+  max-width: 100px;
+}
+
+.undo-button img {
+  display: block;
+  width: 40px;
+  height: auto;
+  object-fit: cover; /* Зображення буде розтягнуте, щоб заповнити весь розмір кнопки */
+}
+
+
+.undo-button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
 }

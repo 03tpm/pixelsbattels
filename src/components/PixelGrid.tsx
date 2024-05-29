@@ -13,6 +13,7 @@ const PixelGrid: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>('#000000');
   const [lastPlaced, setLastPlaced] = useState<Date | null>(null);
   const [cooldown, setCooldown] = useState<number>(0);
+  const [history, setHistory] = useState<Pixel[]>([]);
 
   useEffect(() => {
     const pixelsRef = ref(database, 'pixels');
@@ -29,7 +30,7 @@ const PixelGrid: React.FC = () => {
       const interval = setInterval(() => {
         const timePassed = Math.floor((new Date().getTime() - lastPlaced.getTime()) / 1000);
         setCooldown(Math.max(0 - timePassed, 0));
-      }, 0);
+      }, 1000);
       return () => clearInterval(interval);
     }
   }, [lastPlaced]);
@@ -42,6 +43,7 @@ const PixelGrid: React.FC = () => {
     
     set(ref(database, `pixels/${pixelKey}`), newPixel)
       .then(() => {
+        setHistory((prevHistory) => [...prevHistory, newPixel]);
         console.log(`Pixel set at (${x}, ${y}) with color ${selectedColor}`);
         setLastPlaced(new Date());
       })
@@ -50,16 +52,22 @@ const PixelGrid: React.FC = () => {
       });
   };
 
+  const handleUndo = () => {
+    if (history.length === 0) return;
+    const lastPixel = history[history.length - 1];
+    const pixelKey = `${lastPixel.x}_${lastPixel.y}`;
+    set(ref(database, `pixels/${pixelKey}`), null)
+      .then(() => {
+        setHistory((prevHistory) => prevHistory.slice(0, -1));
+        console.log(`Undo pixel at (${lastPixel.x}, ${lastPixel.y})`);
+      })
+      .catch((error) => {
+        console.error('Error undoing pixel:', error);
+      });
+  };
+
   return (
     <div>
-      <div>
-        <label>
-          Оберіть колір:
-          <input type="color" value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)} />
-        </label>
-        <p>Час до наступного пікселя: {cooldown > 0 ? `${cooldown} секунд` : 'можна ставити'}</p>
-        <p>Розважайтесь, та творіть історію ❤️</p>
-      </div>
       <div className="grid">
         {Array.from({ length: 384 }).map((_, y) => (
           <div key={y} className="row">
@@ -79,7 +87,20 @@ const PixelGrid: React.FC = () => {
         ))}
       </div>
       <p>Developed by eeaq</p>
-    </div>
+      <div className="color-picker-container">
+        <div className="color-picker">
+          <label>
+            Оберіть колір:ㅤ
+            <input type="color" value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)} />
+          </label>
+        </div>
+          <div className="undo-butto">
+            <button onClick={handleUndo} className="undo-button">
+              <img src="https://imgur.com/s6rdAMR.png" alt="Undo" />
+            </button>
+          </div>
+        </div> 
+      </div>
   );
 };
 

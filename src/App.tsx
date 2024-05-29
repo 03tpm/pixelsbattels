@@ -6,7 +6,7 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Pixel Battle</h1>
+      <h1>Pixel Paint</h1>
       <PixelGrid />
     </div>
   );
